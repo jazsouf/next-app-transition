@@ -18,6 +18,11 @@ function ExitAnimation() {
         opacity: transitionTo !== null ? 1 : 0,
       }}
       className="h-screen w-screen z-2 absolute inset-0 bg-black"
+      onAnimationStart={() => {
+        if (transitionTo === null) return;
+        if (transitionTo === "Home") return router.prefetch("/");
+        router.prefetch("/" + transitionTo?.toLocaleLowerCase());
+      }}
       onAnimationComplete={() => {
         if (transitionTo === null) return;
         if (transitionTo === "Home") return router.push("/");

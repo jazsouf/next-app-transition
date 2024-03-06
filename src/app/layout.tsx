@@ -4,7 +4,7 @@ import "./globals.css";
 import NavBar from "@/components/NavBar";
 import ExitAnimation from "@/components/ExitAnimation";
 import { Suspense } from "react";
-import EnterAnimation from "@/components/EnterAnimation";
+import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,11 +21,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Suspense>
-          <ExitAnimation />
-        </Suspense>
-        <NavBar />
-        {children}
+        <main className="min-h-screen">
+          <Suspense>
+            <ExitAnimation />
+          </Suspense>
+          <NavBar />
+          {children}
+          <Footer />
+        </main>
       </body>
     </html>
   );
